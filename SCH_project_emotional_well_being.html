@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Well Being Guidance</title>
+    <style>
+        :root {
+            --bg-page: #fbf9f4;
+            --surface: #ffffff;
+            --border: #e3ded5;
+            --ink-main: #2d2a26;
+            --ink-muted: #6e675f;
+            --tag-yellow: #fef08a;
+            --tag-text: #713f12;
+            --blue-soft: #e0f2fe;
+            --blue-text: #0369a1;
+            --coral-soft: #ffedd5;
+            --good-bg: #ecfdf5;
+            --good-border: #34d399;
+            --good-text: #065f46;
+            --oops-bg: #fef2f2;
+            --oops-border: #f87171;
+            --oops-text: #991b1b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--ink-main);
+            line-height: 1.5;
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--surface);
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            box-shadow: 0 4px 0 var(--border);
+            overflow: hidden;
+        }
+
+        header {
+            padding: 22px 24px;
+            background-color: #fffdf8;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .class-pill {
+            display: inline-block;
+            background-color: var(--tag-yellow);
+            color: var(--tag-text);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink-main);
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: var(--ink-muted);
+            margin-top: 3px;
+        }
+
+        .nav-bar {
+            display: flex;
+            gap: 8px;
+            padding: 12px 24px;
+            background-color: #f7f3ec;
+            border-bottom: 2px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .nav-btn {
+            background-color: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.1s ease;
+        }
+
+        .nav-btn:hover {
+            border-color: #b0a89d;
+            color: var(--ink-main);
+        }
+
+        .nav-btn.active {
+            background-color: #0284c7;
+            border-color: #0284c7;
+            color: #ffffff;
+            box-shadow: 0 2px 0 #0369a1;
+        }
+
+        main {
+            padding: 24px;
+        }
+
+        .view-section {
+            display: none;
+        }
+
+        .view-section.active {
+            display: block;
+        }
+
+        .btn-action {
+            background-color: #0284c7;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #0369a1;
+            font-family: inherit;
+        }
+
+        .btn-action:hover {
+            background-color: #0369a1;
+        }
+
+        .btn-action:active {
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #0369a1;
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--ink-muted);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .btn-ghost:hover {
+            background-color: #f7f3ec;
+            color: var(--ink-main);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Activity 1 */
+        .quiz-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background-color: var(--blue-soft);
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--blue-text);
+            margin-bottom: 20px;
+        }
+
+        .scenario-box {
+            background-color: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .scenario-badge {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #d97706;
+            margin-bottom: 4px;
+        }
+
+        .scenario-story {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink-main);
+            line-height: 1.45;
+        }
+
+        .choices-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .choice-btn {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            width: 100%;
+            text-align: left;
+            background-color: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: 14px;
+            color: var(--ink-main);
+            cursor: pointer;
+            font-family: inherit;
+            line-height: 1.4;
+        }
+
+        .choice-btn:hover:not(:disabled) {
+            border-color: #a8a29e;
+            background-color: #fafaf9;
+        }
+
+        .choice-btn.is-correct {
+            background-color: var(--good-bg);
+            border-color: var(--good-border);
+            color: var(--good-text);
+            font-weight: 600;
+        }
+
+        .choice-btn.is-wrong {
+            background-color: var(--oops-bg);
+            border-color: var(--oops-border);
+            color: var(--oops-text);
+        }
+
+        .choice-mark {
+            font-weight: 700;
+            font-size: 15px;
+            min-width: 18px;
+            text-align: right;
+        }
+
+        .quiz-feedback {
+            margin-top: 16px;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 13.5px;
+            line-height: 1.5;
+            display: none;
+        }
+
+        .quiz-feedback.good {
+            display: block;
+            background-color: var(--good-bg);
+            border: 1.5px solid var(--good-border);
+            color: var(--good-text);
+        }
+
+        .quiz-feedback.bad {
+            display: block;
+            background-color: var(--oops-bg);
+            border: 1.5px solid var(--oops-border);
+            color: var(--oops-text);
+        }
+
+        .feedback-heading {
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .quiz-nav-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 18px;
+        }
+
+        .score-card {
+            text-align: center;
+            padding: 24px 12px;
+        }
+
+        .big-score {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--ink-main);
+            margin: 10px 0;
+        }
+
+        /* Activity 2: Breathing & Photos */
+        .breath-card {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .breath-card h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--ink-main);
+            margin-bottom: 6px;
+        }
+
+        .breath-desc {
+            font-size: 13.5px;
+            color: var(--ink-muted);
+            margin-bottom: 20px;
+        }
+
+        .breath-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 0;
+        }
+
+        .breath-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: #bae6fd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #0369a1;
+            font-size: 16px;
+            transition: transform 4s ease-in-out;
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+        }
+
+        .breath-circle.expand { transform: scale(1.4); }
+        .breath-circle.shrink { transform: scale(1); }
+
+        .breath-status {
+            margin-top: 18px;
+            font-weight: 600;
+            color: #0284c7;
+            font-size: 14px;
+        }
+
+        .cheer-section h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--ink-main);
+            margin-bottom: 12px;
+        }
+
+        .cheer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .cheer-item {
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        }
+
+        .cheer-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cheer-item p {
+            padding: 10px 12px;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--ink-main);
+            text-align: center;
+            background: #fffdf8;
+        }
+
+        /* Activity 3 */
+        .board-controls {
+            background-color: #faf7f2;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 20px;
+        }
+
+        .two-up {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        @media (max-width: 580px) {
+            .two-up {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .two-up textarea {
+            width: 100%;
+            height: 70px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: 1.5px solid var(--border);
+            font-family: inherit;
+            font-size: 13.5px;
+            color: var(--ink-main);
+            background: #ffffff;
+            resize: none;
+        }
+
+        .two-up textarea:focus {
+            outline: none;
+            border-color: #0284c7;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ink-main);
+            margin-bottom: 4px;
+        }
+
+        .board-canvas-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: 8px;
+        }
+
+        .board-area {
+            min-height: 420px;
+            background-color: #fcfbfa;
+            border: 2px dashed #ded8cc;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .no-notes {
+            margin: auto;
+            color: var(--ink-muted);
+            font-style: italic;
+            font-size: 13.5px;
+        }
+
+        .sticky-card {
+            width: fit-content;
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1.5px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        .sticky-yellow { background-color: #fef9c3; border-color: #fef08a; }
+        .sticky-blue { background-color: #e0f2fe; border-color: #bae6fd; }
+        .sticky-green { background-color: #dcfce7; border-color: #bbf7d0; }
+        .sticky-purple { background-color: #f3e8ff; border-color: #e9d5ff; }
+
+        .sticky-card .side-label {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            opacity: 0.7;
+            margin-bottom: 2px;
+        }
+
+        .sticky-problem {
+            margin-bottom: 8px;
+            color: #1e293b;
+        }
+
+        .sticky-fix {
+            background-color: rgba(255, 255, 255, 0.65);
+            padding: 6px 10px;
+            border-radius: 6px;
+            border-left: 3px solid rgba(0, 0, 0, 0.2);
+            color: #0f172a;
+        }
+
+        footer {
+            padding: 12px 24px;
+            border-top: 1.5px solid var(--border);
+            font-size: 12px;
+            color: var(--ink-muted);
+            text-align: center;
+            background-color: #fffdf8;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="class-pill">Health Class Project</span>
+        <h1 id="screenTitle">Emotional Well Being Guidance</h1>
+        <p class="subtitle" id="screenDesc">Read the scenario and choose the healthiest way to respond.</p>
+    </header>
+
+    <nav class="nav-bar">
+        <button type="button" class="nav-btn active" data-tab="act1">Scenario Practice</button>
+        <button type="button" class="nav-btn" data-tab="act2">Take a Breather</button>
+        <button type="button" class="nav-btn" data-tab="act3">Whiteboard</button>
+    </nav>
+
+    <main>
+        <!-- Activity 1 -->
+        <section id="act1" class="view-section active">
+            <div class="quiz-top">
+                <span id="qCount">Question 1 of 5</span>
+                <span id="scoreTracker">Score: 0 / 5</span>
+            </div>
+
+            <div id="quizBody">
+                <div class="scenario-box">
+                    <div class="scenario-badge" id="qTopic">At School</div>
+                    <div class="scenario-story" id="qStory">Loading scenario...</div>
+                </div>
+
+                <div class="choices-wrap" id="choicesBox"></div>
+
+                <div id="whyBox" class="quiz-feedback">
+                    <div class="feedback-heading" id="whyTitle"></div>
+                    <div id="whyBody"></div>
+                </div>
+
+                <div class="quiz-nav-row">
+                    <button type="button" id="nextQBtn" class="btn-action hidden">Next Scenario &rarr;</button>
+                </div>
+            </div>
+
+            <div id="quizFinish" class="score-card hidden">
+                <h2>All Finished!</h2>
+                <div class="big-score" id="finalNumber">0 / 5</div>
+                <p id="finalNote" style="color: var(--ink-muted); margin-bottom: 20px; font-size: 14px;"></p>
+                <button type="button" id="retryBtn" class="btn-action">Try Again</button>
+            </div>
+        </section>
+
+        <!-- Activity 2: Breathing & Cheerful Photos -->
+        <section id="act2" class="view-section">
+            <div class="breath-card">
+                <h2>Take Slow Breaths</h2>
+                <p class="breath-desc">Breathe in when the circle grows, and breathe out when it gets small.</p>
+
+                <div class="breath-box">
+                    <div class="breath-circle shrink" id="breathCircle">Ready</div>
+                    <p id="breathText" class="breath-status">Tap the button below when you're ready.</p>
+                    <button type="button" class="btn-action" style="margin-top: 14px;" onclick="toggleBreathing()" id="breathBtn">Start Breathing</button>
+                </div>
+            </div>
+
+            <div class="cheer-section">
+                <h3>Friendly Reminders</h3>
+                <div class="cheer-grid">
+                    <div class="cheer-item">
+                        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80" alt="Happy dog smiling in grass">
+                        <p>Take it one step at a time!</p>
+                    </div>
+                    <div class="cheer-item">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80" alt="Sunny calm beach with gentle waves">
+                        <p>You can always pause and reset.</p>
+                    </div>
+                    <div class="cheer-item">
+                        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&q=80" alt="Cute kitten looking up">
+                        <p>You're doing great!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Activity 3 -->
+        <section id="act3" class="view-section">
+            <div class="board-controls">
+                <div class="two-up">
+                    <div>
+                        <label class="form-label" for="probText">What was bugging you?</label>
+                        <textarea id="probText" placeholder="e.g. My hands were shaking before answering a question in class."></textarea>
+                    </div>
+                    <div>
+                        <label class="form-label" for="solText">How did you stay calm?</label>
+                        <textarea id="solText" placeholder="e.g. Took two deep breaths and gave it my best shot anyway."></textarea>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: flex-end; gap: 8px;">
+                    <button type="button" id="wipeBtn" class="btn-ghost">Clear Board</button>
+                    <button type="button" id="pinBtn" class="btn-action">Post Entry</button>
+                </div>
+            </div>
+
+            <div class="board-canvas-head">
+                <span>Whiteboard</span>
+                <span id="stickyCount">3 notes pinned</span>
+            </div>
+
+            <div class="board-area" id="boardWall"></div>
+        </section>
+    </main>
+
+    <footer>
+        Health &amp; Wellness Class &bull; Learning to deal with big feelings
+    </footer>
+</div>
+
+<script>
+    /* TAB NAVIGATION */
+    const navButtons = document.querySelectorAll(".nav-btn");
+    const sections = document.querySelectorAll(".view-section");
+    const screenTitle = document.getElementById("screenTitle");
+    const screenDesc = document.getElementById("screenDesc");
+
+    const tabCopy = {
+        act1: {
+            title: "Emotional Well Being Guidance",
+            desc: "Read the scenario and choose the healthiest way to respond."
+        },
+        act2: {
+            title: "Take a Breather",
+            desc: "Follow the circle to slow your breathing down and relax."
+        },
+        act3: {
+            title: "Whiteboard",
+            desc: "Share your challenge and the positive steps you used to handle it."
+        }
+    };
+
+    navButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const target = btn.dataset.tab;
+            navButtons.forEach(b => b.classList.remove("active"));
+            sections.forEach(s => s.classList.remove("active"));
+
+            btn.classList.add("active");
+            document.getElementById(target).classList.add("active");
+
+            screenTitle.textContent = tabCopy[target].title;
+            screenDesc.textContent = tabCopy[target].desc;
+        });
+    });
+
+    /* ACTIVITY 1: Questions */
+    const quizData = [
+        {
+            topic: "Friends & Phones",
+            story: "You text your best friend asking if they want to play a game. They read your message but don't answer. A few minutes later, you see them online playing with someone else.",
+            choices: [
+                {
+                    text: "Post a mean story about how 'fake friends are the worst' so they feel bad.",
+                    correct: false,
+                    reason: "Starting drama online only makes things messy and can lose you a friend over a small thing."
+                },
+                {
+                    text: "Put your phone down, go pet your dog or grab a snack, and ask them nicely tomorrow what happened.",
+                    correct: true,
+                    reason: "Taking a quick break stops you from saying something mean when you are still feeling hurt."
+                },
+                {
+                    text: "Keep spamming their phone with 20 question marks until they reply.",
+                    correct: false,
+                    reason: "Spamming people usually annoys them and makes them want to talk to you even less."
+                },
+                {
+                    text: "Block them on everything and tell your other friends not to talk to them.",
+                    correct: false,
+                    reason: "Blocking someone right away is an overreaction. They might have just had a plan already made."
+                }
+            ]
+        },
+        {
+            topic: "Homework Stress",
+            story: "It's 9:30 PM on a school night. You still have 10 math problems left, you're super tired, and your eyes are burning. You feel like crying.",
+            choices: [
+                {
+                    text: "Stay up until 1:00 AM forcing yourself to finish, even if you feel terrible.",
+                    correct: false,
+                    reason: "If you don't sleep, you will feel sick and tired in class tomorrow and still not understand the math."
+                },
+                {
+                    text: "Slam your laptop shut, throw your book, and watch YouTube videos until 2:00 AM to forget about it.",
+                    correct: false,
+                    reason: "Watching videos makes you forget the problem for an hour, but you will still wake up stressed and unprepared."
+                },
+                {
+                    text: "Try just 2 more problems, pack your bag, go to bed, and ask your teacher for help first thing in the morning.",
+                    correct: true,
+                    reason: "Getting rest protects your body, and teachers are usually very nice about helping if you ask before class."
+                },
+                {
+                    text: "Lie in bed awake worrying about how mad your teacher will be.",
+                    correct: false,
+                    reason: "Lying in bed stressing keeps you from sleeping and doesn't finish the homework either."
+                }
+            ]
+        },
+        {
+            topic: "Family Stuff",
+            story: "At dinner, someone in your family says: 'Why can't you get grades like your older brother does?' You feel super embarrassed and mad.",
+            choices: [
+                {
+                    text: "Yell 'I hate this family!', knock over your chair, and run to your room slamming the door.",
+                    correct: false,
+                    reason: "Screaming just gets you into trouble and doesn't help your family understand why that hurt your feelings."
+                },
+                {
+                    text: "Drink some water to stay calm, and later tell them in private: 'It hurts my feelings when you compare me to him.'",
+                    correct: true,
+                    reason: "Waiting until dinner is over to explain your feelings makes adults much more likely to listen and apologize."
+                },
+                {
+                    text: "Tell yourself that you are stupid and that your brother is always better than you.",
+                    correct: false,
+                    reason: "You have your own talents and comparing yourself to others just makes you feel bad about yourself."
+                },
+                {
+                    text: "Make fun of something your brother is bad at so everyone laughs at him instead.",
+                    correct: false,
+                    reason: "Picking on your brother isn't fair to him—he didn't make the comparison, your family member did."
+                }
+            ]
+        },
+        {
+            topic: "Test Grades",
+            story: "You studied really hard for a science test, but when the teacher hands it back, you got a C minus. Kids around you are talking about their A's.",
+            choices: [
+                {
+                    text: "Stuff the test deep into your backpack, call science dumb, and say you aren't trying ever again.",
+                    correct: false,
+                    reason: "Giving up protects your pride for one day, but it will make future science tests even harder."
+                },
+                {
+                    text: "Spend the rest of the day thinking you're dumb and that all your classmates are judging you.",
+                    correct: false,
+                    reason: "One test grade doesn't mean you aren't smart, and classmates are usually too busy looking at their own grades to care."
+                },
+                {
+                    text: "Take a deep breath, put it away, and go ask the teacher after class which questions you got wrong so you can fix them.",
+                    correct: true,
+                    reason: "Looking at what went wrong helps you learn for next time and shows the teacher you care."
+                },
+                {
+                    text: "Argue with the teacher in the middle of class and tell them the test was unfair.",
+                    correct: false,
+                    reason: "Arguing in front of everyone puts the teacher on defense and makes it harder for them to help you."
+                }
+            ]
+        },
+        {
+            topic: "Group Projects",
+            story: "You have to do a poster with a partner due tomorrow. Your partner hasn't drawn anything or helped, and when you remind them, they just shrug.",
+            choices: [
+                {
+                    text: "Scream at them in the hallway and scratch their name off the paper with a marker.",
+                    correct: false,
+                    reason: "Yelling makes you look like the bad guy, even though they were the one who didn't work."
+                },
+                {
+                    text: "Do the entire poster yourself in secret and just be quietly angry about it for the rest of the year.",
+                    correct: false,
+                    reason: "Doing all their work is exhausting and teaches them they can get away with being lazy."
+                },
+                {
+                    text: "Finish your half of the work, and quietly let the teacher know which parts you each worked on.",
+                    correct: true,
+                    reason: "This is fair to you, avoids a screaming match, and lets the teacher handle the grading properly."
+                },
+                {
+                    text: "Throw away your part of the poster too so both of you fail together.",
+                    correct: false,
+                    reason: "Failing on purpose only hurts your own report card."
+                }
+            ]
+        }
+    ];
+
+    let currentQ = 0;
+    let quizScore = 0;
+    let isAnswered = false;
+
+    const qTopic = document.getElementById("qTopic");
+    const qStory = document.getElementById("qStory");
+    const choicesBox = document.getElementById("choicesBox");
+    const whyBox = document.getElementById("whyBox");
+    const whyTitle = document.getElementById("whyTitle");
+    const whyBody = document.getElementById("whyBody");
+    const nextQBtn = document.getElementById("nextQBtn");
+    const qCount = document.getElementById("qCount");
+    const scoreTracker = document.getElementById("scoreTracker");
+    const quizBody = document.getElementById("quizBody");
+    const quizFinish = document.getElementById("quizFinish");
+    const finalNumber = document.getElementById("finalNumber");
+    const finalNote = document.getElementById("finalNote");
+    const retryBtn = document.getElementById("retryBtn");
+
+    function showQuestion() {
+        isAnswered = false;
+        const item = quizData[currentQ];
+
+        qCount.textContent = `Question ${currentQ + 1} of ${quizData.length}`;
+        scoreTracker.textContent = `Score: ${quizScore} / ${quizData.length}`;
+
+        qTopic.textContent = item.topic;
+        qStory.textContent = item.story;
+
+        whyBox.className = "quiz-feedback";
+        whyBox.style.display = "none";
+        nextQBtn.classList.add("hidden");
+        choicesBox.innerHTML = "";
+
+        item.choices.forEach((c, idx) => {
+            const btn = document.createElement("button");
+            btn.className = "choice-btn";
+
+            const txt = document.createElement("span");
+            txt.textContent = c.text;
+            btn.appendChild(txt);
+
+            const icon = document.createElement("span");
+            icon.className = "choice-mark";
+            btn.appendChild(icon);
+
+            btn.addEventListener("click", () => pickChoice(idx));
+            choicesBox.appendChild(btn);
+        });
+    }
+
+    function pickChoice(choiceIdx) {
+        if (isAnswered) return;
+        isAnswered = true;
+
+        const item = quizData[currentQ];
+        const selected = item.choices[choiceIdx];
+        const buttons = choicesBox.querySelectorAll(".choice-btn");
+
+        if (selected.correct) {
+            quizScore++;
+            scoreTracker.textContent = `Score: ${quizScore} / ${quizData.length}`;
+        }
+
+        buttons.forEach((b, i) => {
+            b.disabled = true;
+            const c = item.choices[i];
+            const mark = b.querySelector(".choice-mark");
+
+            if (c.correct) {
+                b.classList.add("is-correct");
+                mark.textContent = "✓";
+            } else if (i === choiceIdx && !c.correct) {
+                b.classList.add("is-wrong");
+                mark.textContent = "✕";
+            } else {
+                b.style.opacity = "0.5";
+            }
+        });
+
+        whyBox.style.display = "block";
+        if (selected.correct) {
+            whyBox.className = "quiz-feedback good";
+            whyTitle.textContent = "Great choice!";
+            whyBody.textContent = selected.reason;
+        } else {
+            whyBox.className = "quiz-feedback bad";
+            whyTitle.textContent = "Why that doesn't help much:";
+            const rightOne = item.choices.find(o => o.correct);
+            whyBody.innerHTML = `${selected.reason}<br><br><strong>Better way:</strong> ${rightOne.reason}`;
+        }
+
+        nextQBtn.classList.remove("hidden");
+    }
+
+    nextQBtn.addEventListener("click", () => {
+        currentQ++;
+        if (currentQ < quizData.length) {
+            showQuestion();
+        } else {
+            quizBody.classList.add("hidden");
+            quizFinish.classList.remove("hidden");
+            finalNumber.textContent = `${quizScore} / ${quizData.length}`;
+
+            if (quizScore === 5) {
+                finalNote.textContent = "Awesome job! You are great at keeping cool and thinking before acting.";
+            } else if (quizScore >= 3) {
+                finalNote.textContent = "Good try! You know how to handle most tricky situations pretty well.";
+            } else {
+                finalNote.textContent = "Nice practice! Managing big feelings is a skill that takes time to learn.";
+            }
+        }
+    });
+
+    retryBtn.addEventListener("click", () => {
+        currentQ = 0;
+        quizScore = 0;
+        quizFinish.classList.add("hidden");
+        quizBody.classList.remove("hidden");
+        showQuestion();
+    });
+
+    showQuestion();
+
+    /* ACTIVITY 2: Breathing Exercise */
+    let breathing = false;
+    let breathInterval;
+    const breathCircle = document.getElementById('breathCircle');
+    const breathText = document.getElementById('breathText');
+    const breathBtn = document.getElementById('breathBtn');
+
+    function toggleBreathing() {
+        if (breathing) {
+            clearInterval(breathInterval);
+            breathing = false;
+            breathCircle.className = 'breath-circle shrink';
+            breathCircle.innerText = 'Ready';
+            breathText.innerText = "Tap the button below when you're ready.";
+            breathBtn.innerText = 'Start Breathing';
+            return;
+        }
+
+        breathing = true;
+        breathBtn.innerText = 'Stop';
+        runPhase();
+    }
+
+    function runPhase() {
+        let phase = 0;
+        const phases = [
+            { label: 'Breathe In', sub: 'Breathe in slowly through your nose...', class: 'breath-circle expand' },
+            { label: 'Hold', sub: 'Hold your breath gently...', class: 'breath-circle expand' },
+            { label: 'Breathe Out', sub: 'Let all the air out through your mouth...', class: 'breath-circle shrink' },
+            { label: 'Wait', sub: 'Relax for a moment before your next breath...', class: 'breath-circle shrink' }
+        ];
+
+        const cycle = () => {
+            breathCircle.innerText = phases[phase].label;
+            breathText.innerText = phases[phase].sub;
+            breathCircle.className = phases[phase].class;
+            phase = (phase + 1) % 4;
+        };
+
+        cycle();
+        breathInterval = setInterval(cycle, 4000);
+    }
+
+    /* ACTIVITY 3: Whiteboard */
+    const probText = document.getElementById("probText");
+    const solText = document.getElementById("solText");
+    const pinBtn = document.getElementById("pinBtn");
+    const wipeBtn = document.getElementById("wipeBtn");
+    const boardWall = document.getElementById("boardWall");
+    const stickyCount = document.getElementById("stickyCount");
+
+    const stickyColors = ["sticky-yellow", "sticky-blue", "sticky-green", "sticky-purple"];
+
+    let userNotes = [
+        {
+            prob: "Freaked out right before my science presentation because my hands were shaking.",
+            sol: "Took 3 slow breaths, drank some cold water, and looked at my best friend in the front row.",
+            color: "sticky-yellow"
+        },
+        {
+            prob: "Got left out of a four-square game at recess.",
+            sol: "Walked over and joined two other kids reading on the bench instead of yelling at them.",
+            color: "sticky-blue"
+        },
+        {
+            prob: "Got super mad because my sister borrowed my favorite hoodie without asking.",
+            sol: "Waited 10 minutes until I wasn't furious, then told her she has to ask first next time.",
+            color: "sticky-green"
+        }
+    ];
+
+    const positions = ["flex-start", "center", "flex-end"];
+
+    function escapeHtml(str) {
+        const d = document.createElement("div");
+        d.textContent = str;
+        return d.innerHTML;
+    }
+
+    function renderWall() {
+        boardWall.innerHTML = "";
+        stickyCount.textContent = `${userNotes.length} note${userNotes.length === 1 ? '' : 's'} pinned`;
+
+        if (userNotes.length === 0) {
+            const empty = document.createElement("div");
+            empty.className = "no-notes";
+            empty.textContent = "No notes pinned yet! Type something above to post on the whiteboard.";
+            boardWall.appendChild(empty);
+            return;
+        }
+
+        userNotes.forEach((n) => {
+            const card = document.createElement("div");
+            card.className = `sticky-card ${n.color}`;
+
+            card.style.alignSelf = positions[Math.floor(Math.random() * positions.length)];
+            const tilt = (Math.random() * 3 - 1.5).toFixed(2);
+            card.style.transform = `rotate(${tilt}deg)`;
+
+            card.innerHTML = `
+                <div class="sticky-problem">
+                    <div class="side-label">The Problem:</div>
+                    ${escapeHtml(n.prob)}
+                </div>
+                <div class="sticky-fix">
+                    <div class="side-label">How I Handled It:</div>
+                    ${escapeHtml(n.sol)}
+                </div>
+            `;
+
+            boardWall.appendChild(card);
+        });
+    }
+
+    pinBtn.addEventListener("click", () => {
+        const p = probText.value.trim();
+        const s = solText.value.trim();
+
+        if (!p || !s) {
+            alert("Please fill in both what bugged you and how you stayed calm!");
+            return;
+        }
+
+        const pickedColor = stickyColors[Math.floor(Math.random() * stickyColors.length)];
+        userNotes.unshift({ prob: p, sol: s, color: pickedColor });
+
+        probText.value = "";
+        solText.value = "";
+        renderWall();
+    });
+
+    wipeBtn.addEventListener("click", () => {
+        if (userNotes.length > 0 && confirm("Do you want to clear all the notes?")) {
+            userNotes = [];
+            renderWall();
+        }
+    });
+
+    renderWall();
+</script>
+</body>
+</html>
